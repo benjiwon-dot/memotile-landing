@@ -1,0 +1,30 @@
+{
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "https://memotile.vercel.app/admin",
+      "permanent": false
+    },
+    {
+      "source": "/admin/:match*",
+      "destination": "https://memotile.vercel.app/admin/:match*",
+      "permanent": false
+    },
+    {
+      "source": "/marketing",
+      "destination": "https://memotile.vercel.app/marketing",
+      "permanent": false
+    },
+    {
+      "source": "/marketing/:match*",
+      "destination": "https://memotile.vercel.app/marketing/:match*",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
