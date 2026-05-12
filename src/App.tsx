@@ -20,10 +20,14 @@ interface TranslationStrings {
   faqItems: { q: string; a: string }[];
   footerPrivacy: string;
   footerTerms: string;
+  footerDeletion: string; // 추가: 계정 삭제 메뉴
   privacyPolicyTitle: string;
   privacyPolicy: { title: string; body: string }[];
   termsTitle: string;
   termsOfService: { title: string; body: string }[];
+  deletionTitle: string; // 추가: 계정 삭제 모달 타이틀
+  deletionContent: { title: string; body: string }[]; // 추가: 계정 삭제 모달 내용
+  deletionButton: string; // 추가: 계정 삭제 이메일 버튼
 }
 
 const translations: Record<Language, TranslationStrings> = {
@@ -54,6 +58,7 @@ const translations: Record<Language, TranslationStrings> = {
     ],
     footerPrivacy: 'Privacy Policy',
     footerTerms: 'Terms of Service',
+    footerDeletion: 'Account Deletion',
     privacyPolicyTitle: 'Privacy Policy',
     privacyPolicy: [
       { title: '1. Personal Data Collected', body: 'We collect your name, address, email, phone number, and payment information when you place an order. We may also collect image files you upload to create your tiles.' },
@@ -86,6 +91,12 @@ const translations: Record<Language, TranslationStrings> = {
       { title: '14. Termination', body: 'MemoTile may suspend or terminate your account if you violate these terms. You may also discontinue use at any time.' },
       { title: '15. Contact', body: 'For questions about these terms, contact us at official@memotile.com or Line: @memotile.' },
     ],
+    deletionTitle: 'Account & Data Deletion',
+    deletionContent: [
+      { title: 'How to Request Deletion', body: 'If you wish to delete your MemoTile account and all associated personal data, order history, and uploaded photos, please send us an email request. We will securely erase your data within 7-14 business days.' },
+      { title: 'Important Note', body: 'Once your account is deleted, it cannot be recovered. If you have an active, unfulfilled order, we will process the deletion request after the order has been successfully delivered.' }
+    ],
+    deletionButton: 'Send Deletion Request Email'
   },
   TH: {
     navLogo: 'MemoTile',
@@ -114,6 +125,7 @@ const translations: Record<Language, TranslationStrings> = {
     ],
     footerPrivacy: 'นโยบายความเป็นส่วนตัว',
     footerTerms: 'เงื่อนไขการใช้บริการ',
+    footerDeletion: 'ขอลบบัญชี',
     privacyPolicyTitle: 'นโยบายความเป็นส่วนตัว',
     privacyPolicy: [
       { title: '1. ข้อมูลส่วนบุคคลที่รวบรวม', body: 'เรารวบรวมชื่อ ที่อยู่ อีเมล เบอร์โทรศัพท์ และข้อมูลการชำระเงินเมื่อคุณสั่งซื้อสินค้า รวมถึงไฟล์รูปภาพที่คุณอัปโหลดเพื่อสร้างกรอบรูป' },
@@ -146,6 +158,12 @@ const translations: Record<Language, TranslationStrings> = {
       { title: '14. การยุติบริการ', body: 'MemoTile อาจระงับบัญชีของคุณหากละเมิดข้อกำหนด คุณสามารถหยุดใช้บริการได้ตลอดเวลา' },
       { title: '15. ข้อมูลติดต่อ', body: 'ติดต่อเราได้ที่ official@memotile.com หรือ Line: @memotile' },
     ],
+    deletionTitle: 'คำขอลบบัญชีและข้อมูล',
+    deletionContent: [
+      { title: 'วิธีการขอลบบัญชี', body: 'หากต้องการลบบัญชี MemoTile และข้อมูลส่วนบุคคล ประวัติการสั่งซื้อ และรูปภาพที่อัปโหลดทั้งหมด โปรดส่งอีเมลแจ้งความประสงค์มาที่เรา เราจะดำเนินการลบข้อมูลของคุณอย่างปลอดภัยภายใน 7-14 วันทำการ' },
+      { title: 'ข้อควรระวัง', body: 'เมื่อลบแล้วจะไม่สามารถกู้คืนบัญชีได้ หากคุณมีคำสั่งซื้อที่กำลังดำเนินการอยู่ ข้อมูลของคุณจะถูกลบหลังจากจัดส่งคำสั่งซื้อเรียบร้อยแล้ว' }
+    ],
+    deletionButton: 'ส่งอีเมลขอลบบัญชี'
   },
 };
 
@@ -153,7 +171,7 @@ export default function App() {
   const [lang, setLang] = useState<Language>('TH');
   const t = translations[lang];
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [legalModal, setLegalModal] = useState<'privacy' | 'terms' | null>(null);
+  const [legalModal, setLegalModal] = useState<'privacy' | 'terms' | 'deletion' | null>(null);
 
   const Logo = ({ className = "text-xl" }: { className?: string }) => (
     <div className={`font-black tracking-tight uppercase ${className} flex items-center`}>
@@ -440,13 +458,17 @@ export default function App() {
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-6 text-[10px] text-gray-400 border-t border-gray-50 pt-6 w-full justify-center">
+        <div className="flex items-center gap-4 text-[10px] text-gray-400 border-t border-gray-50 pt-6 w-full justify-center flex-wrap">
           <button onClick={() => setLegalModal('privacy')} className="hover:text-[#8BD1C4] transition-colors">
             {t.footerPrivacy}
           </button>
           <span className="text-gray-200">|</span>
           <button onClick={() => setLegalModal('terms')} className="hover:text-[#8BD1C4] transition-colors">
             {t.footerTerms}
+          </button>
+          <span className="text-gray-200">|</span>
+          <button onClick={() => setLegalModal('deletion')} className="hover:text-[#8BD1C4] transition-colors font-bold">
+            {t.footerDeletion}
           </button>
         </div>
       </footer>
@@ -472,7 +494,9 @@ export default function App() {
             >
               <div className="sticky top-0 bg-white/90 backdrop-blur-md border-b border-gray-100 px-8 py-5 flex items-center justify-between z-10 rounded-t-2xl">
                 <h2 className="text-lg font-black text-[#41424E]">
-                  {legalModal === 'privacy' ? t.privacyPolicyTitle : t.termsTitle}
+                  {legalModal === 'privacy' ? t.privacyPolicyTitle :
+                    legalModal === 'terms' ? t.termsTitle :
+                      t.deletionTitle}
                 </h2>
                 <button
                   onClick={() => setLegalModal(null)}
@@ -482,12 +506,27 @@ export default function App() {
                 </button>
               </div>
               <div className="px-8 py-8 flex flex-col gap-6">
-                {(legalModal === 'privacy' ? t.privacyPolicy : t.termsOfService).map((section, i) => (
-                  <div key={i}>
-                    <h3 className="text-sm font-black text-[#41424E] mb-2">{section.title}</h3>
-                    <p className="text-[13px] text-[#41424E] opacity-70 leading-relaxed">{section.body}</p>
+                {(legalModal === 'privacy' ? t.privacyPolicy :
+                  legalModal === 'terms' ? t.termsOfService :
+                    t.deletionContent).map((section, i) => (
+                      <div key={i}>
+                        <h3 className="text-sm font-black text-[#41424E] mb-2">{section.title}</h3>
+                        <p className="text-[13px] text-[#41424E] opacity-70 leading-relaxed">{section.body}</p>
+                      </div>
+                    ))}
+
+                {/* Account Deletion Specific Action */}
+                {legalModal === 'deletion' && (
+                  <div className="mt-4 flex justify-center">
+                    <a
+                      href={`mailto:official@memotile.com?subject=Account%20Deletion%20Request`}
+                      className="bg-[#41424E] text-white px-6 py-3 rounded-xl hover:bg-[#2c2d36] hover:scale-105 transition-all shadow-md text-sm font-bold flex items-center gap-2"
+                    >
+                      <Mail size={16} />
+                      {t.deletionButton}
+                    </a>
                   </div>
-                ))}
+                )}
               </div>
             </motion.div>
           </motion.div>
