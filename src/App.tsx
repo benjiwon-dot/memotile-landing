@@ -70,7 +70,8 @@ const translations: Record<Language, TranslationStrings> = {
       { title: '7. Your Rights', body: 'You have the right to access, correct, or delete your personal data. Contact us at official@memotile.com to exercise these rights.' },
       { title: '8. Cookies', body: 'Our website uses cookies to enhance your experience. You may disable cookies in your browser settings, though some features may be affected.' },
       { title: '9. Policy Changes', body: 'We may update this policy periodically. Significant changes will be communicated via email or a prominent notice on our website.' },
-      { title: '10. Contact', body: 'For privacy inquiries, contact us at official@memotile.com or Line: @946zhley.' },
+      // ✨ 약관 텍스트의 라인 아이디를 원래 브랜드 이름으로 복구
+      { title: '10. Contact', body: 'For privacy inquiries, contact us at official@memotile.com or Line: @memotile.' },
       { title: '11. Consent', body: 'By using our services, you consent to the collection and use of your information as described in this Privacy Policy.' },
     ],
     termsTitle: 'Terms of Service',
@@ -89,7 +90,8 @@ const translations: Record<Language, TranslationStrings> = {
       { title: '12. Dispute Resolution', body: 'In the event of a dispute, please contact us first at official@memotile.com so we may resolve the issue amicably.' },
       { title: '13. Changes to Terms', body: 'We reserve the right to update these Terms at any time. Continued use of our services after changes constitutes acceptance.' },
       { title: '14. Termination', body: 'MemoTile may suspend or terminate your account if you violate these terms. You may also discontinue use at any time.' },
-      { title: '15. Contact', body: 'For questions about these terms, contact us at official@memotile.com or Line: @946zhley.' },
+      // ✨ 약관 텍스트의 라인 아이디를 원래 브랜드 이름으로 복구
+      { title: '15. Contact', body: 'For questions about these terms, contact us at official@memotile.com or Line: @memotile.' },
     ],
     deletionTitle: 'Account & Data Deletion',
     deletionContent: [
@@ -137,7 +139,8 @@ const translations: Record<Language, TranslationStrings> = {
       { title: '7. สิทธิ์ของเจ้าของข้อมูล', body: 'คุณมีสิทธิ์เข้าถึง แก้ไข หรือลบข้อมูลส่วนบุคคลของคุณ โปรดติดต่อเราได้ที่ official@memotile.com' },
       { title: '8. คุกกี้และเทคโนโลยีติดตาม', body: 'เว็บไซต์ของเราใช้คุกกี้เพื่อพัฒนาประสบการณ์การใช้งาน คุณสามารถปิดใช้งานคุกกี้ในการตั้งค่าเบราว์เซอร์ได้' },
       { title: '9. การเปลี่ยนแปลงนโยบาย', body: 'เราอาจอัปเดตนโยบายนี้เป็นครั้งคราว และจะแจ้งให้คุณทราบผ่านทางอีเมลหรือประกาศบนเว็บไซต์' },
-      { title: '10. ข้อมูลติดต่อ', body: 'สำหรับคำถามด้านความเป็นส่วนตัว ติดต่อเราได้ที่ official@memotile.com หรือ Line: @946zhley' },
+      // ✨ 약관 텍스트의 라인 아이디를 원래 브랜드 이름으로 복구
+      { title: '10. ข้อมูลติดต่อ', body: 'สำหรับคำถามด้านความเป็นส่วนตัว ติดต่อเราได้ที่ official@memotile.com หรือ Line: @memotile' },
       { title: '11. การยินยอม', body: 'การใช้บริการของเราถือว่าคุณยินยอมให้เรารวบรวมและใช้ข้อมูลตามที่ระบุในนโยบายความเป็นส่วนตัวนี้' },
     ],
     termsTitle: 'เงื่อนไขการใช้บริการ',
@@ -156,7 +159,8 @@ const translations: Record<Language, TranslationStrings> = {
       { title: '12. การระงับข้อพิพาท', body: 'ในกรณีที่เกิดข้อพิพาท เราขอให้ติดต่อที่ official@memotile.com เพื่อแก้ไขปัญหาอย่างฉันมิตร' },
       { title: '13. การเปลี่ยนแปลงข้อกำหนด', body: 'เราขอสงวนสิทธิ์อัปเดตข้อกำหนดได้ตลอดเวลา การใช้บริการต่อไปถือว่ายอมรับข้อกำหนดใหม่' },
       { title: '14. การยุติบริการ', body: 'MemoTile อาจระงับบัญชีของคุณหากละเมิดข้อกำหนด คุณสามารถหยุดใช้บริการได้ตลอดเวลา' },
-      { title: '15. ข้อมูลติดต่อ', body: 'ติดต่อเราได้ที่ official@memotile.com หรือ Line: @946zhley' },
+      // ✨ 약관 텍스트의 라인 아이디를 원래 브랜드 이름으로 복구
+      { title: '15. ข้อมูลติดต่อ', body: 'ติดต่อเราได้ที่ official@memotile.com หรือ Line: @memotile' },
     ],
     deletionTitle: 'คำขอลบบัญชีและข้อมูล',
     deletionContent: [
@@ -367,12 +371,12 @@ export default function App() {
         >
           <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 text-center mb-8">{t.contactTitle}</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 relative z-20">
-            {/* ✨ 연락처 링크 및 아이디 수정 완료 */}
+            {/* ✨ 화면 표시값(value)은 브랜드 이름으로, 클릭 링크(href)는 진짜 주소로 확실히 분리! */}
             {([
               { icon: <User size={20} />, label: lang === 'EN' ? 'Representative' : 'ผู้แทน', value: 'Benjamin', href: undefined, hoverBorder: 'hover:border-[#41424E]', iconBg: 'bg-gray-100', iconColor: 'text-[#41424E]' },
               { icon: <Mail size={20} />, label: 'Email', value: 'official@memotile.com', href: 'mailto:official@memotile.com', hoverBorder: 'hover:border-[#8BD1C4]', iconBg: 'bg-teal-50', iconColor: 'text-[#8BD1C4]' },
               { icon: <Instagram size={20} />, label: 'Instagram', value: '@memotile_studio', href: 'https://instagram.com/memotile_studio', hoverBorder: 'hover:border-[#C6E1A3]', iconBg: 'bg-green-50', iconColor: 'text-[#6aaa7a]' },
-              { icon: <MessageCircle size={20} />, label: 'Line', value: '@946zhley', href: 'https://line.me/ti/p/@946zhley', hoverBorder: 'hover:border-[#FCD34C]', iconBg: 'bg-yellow-50', iconColor: 'text-[#b89a1f]' },
+              { icon: <MessageCircle size={20} />, label: 'Line', value: '@memotile', href: 'https://line.me/ti/p/@946zhley', hoverBorder: 'hover:border-[#FCD34C]', iconBg: 'bg-yellow-50', iconColor: 'text-[#b89a1f]' },
             ] as { icon: React.ReactNode; label: string; value: string; href: string | undefined; hoverBorder: string; iconBg: string; iconColor: string }[]).map((item, i) => {
               const cardClass = `bg-white rounded-2xl p-5 flex flex-col items-center text-center gap-3 border border-gray-200 ${item.hoverBorder} transition-colors shadow-sm block w-full`;
               const inner = (
@@ -384,7 +388,6 @@ export default function App() {
                   <span className="text-sm font-bold text-[#41424E] break-all">{item.value}</span>
                 </>
               );
-              // 확실하게 클릭되도록 <a> 태그(motion.a)에 relative와 z-index를 부여했습니다.
               return item.href ? (
                 <motion.a key={i} href={item.href} target="_blank" rel="noopener noreferrer" whileHover={{ y: -4 }} className={`${cardClass} cursor-pointer relative z-20`}>
                   {inner}
@@ -457,11 +460,11 @@ export default function App() {
               <span className="text-gray-300 tracking-[0.2em] text-[9px] font-black">Email</span>
               <a href="mailto:official@memotile.com" className="hover:text-[#8BD1C4] transition-colors relative z-20">official@memotile.com</a>
             </div>
-            {/* ✨ 푸터의 라인 배지도 클릭 시 새 창으로 넘어가도록 a 태그로 수정했습니다 */}
+            {/* ✨ 푸터의 라인 배지 표시 텍스트 원상복구 */}
             <div className="flex items-center gap-2">
               <span className="text-[#8BD1C4] tracking-[0.2em] text-[9px] font-black">Line Official</span>
               <a href="https://line.me/ti/p/@946zhley" target="_blank" rel="noopener noreferrer" className="bg-green-50 text-[#6aaa7a] px-3 py-1 rounded-full text-[10px] hover:bg-green-100 transition-colors cursor-pointer relative z-20">
-                @946zhley
+                @memotile
               </a>
             </div>
           </div>
