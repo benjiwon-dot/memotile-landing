@@ -14,7 +14,6 @@ interface TranslationStrings {
   inspirationTitle: string;
   inspirationLabels: { travel: string; family: string; pets: string; passion: string };
 
-  // ✨ 가격표 관련 번역 데이터 추가
   pricingTitle: string;
   pricingSub: string;
   pricingCards: {
@@ -58,14 +57,14 @@ const translations: Record<Language, TranslationStrings> = {
     inspirationTitle: 'Get Inspired',
     inspirationLabels: { travel: 'Travel', family: 'Family', pets: 'Pets', passion: 'Passion (Fandom)' },
 
-    // ✨ 가격표 영어 번역
+    // ✨ 수정된 총 할인율 반영 (EN)
     pricingTitle: 'Special Bundle Offers',
     pricingSub: 'The more you frame, the more you save. Limited time offer!',
     pricingCards: [
       { qty: 1, title: 'Single Tile', discount: '33% OFF', price: '฿200', oldPrice: '฿300' },
-      { qty: 3, title: 'Starter Set', discount: 'Extra 10%', price: '฿540', oldPrice: '฿900', isPopular: true },
-      { qty: 10, title: 'Gallery Wall', discount: 'Extra 20%', price: '฿1,600', oldPrice: '฿3,000' },
-      { qty: 15, title: 'Pro Decorator', discount: 'Extra 30%', price: '฿2,100', oldPrice: '฿4,500' },
+      { qty: 3, title: 'Starter Set', discount: '40% OFF', price: '฿540', oldPrice: '฿900', isPopular: true },
+      { qty: 10, title: 'Gallery Wall', discount: '47% OFF', price: '฿1,600', oldPrice: '฿3,000' },
+      { qty: 15, title: 'Pro Decorator', discount: '53% OFF', price: '฿2,100', oldPrice: '฿4,500' },
     ],
 
     footerBrand: 'MemoTile - High-quality photo tiles that stick to your life.',
@@ -136,14 +135,14 @@ const translations: Record<Language, TranslationStrings> = {
     inspirationTitle: 'แรงบันดาลใจ',
     inspirationLabels: { travel: 'ท่องเที่ยว', family: 'ครอบครัว', pets: 'สัตว์เลี้ยง', passion: 'ความชอบ (แฟนดอม)' },
 
-    // ✨ ราคาโปรโมชั่นแปลไทย
+    // ✨ 수정된 총 할인율 반영 (TH)
     pricingTitle: 'โปรโมชั่นเซ็ตสุดคุ้ม',
     pricingSub: 'ยิ่งซื้อเยอะ ยิ่งลดเยอะ โปรโมชั่นมีเวลาจำกัด!',
     pricingCards: [
       { qty: 1, title: 'กรอบเดี่ยว', discount: 'ลด 33%', price: '฿200', oldPrice: '฿300' },
-      { qty: 3, title: 'เซ็ตเริ่มต้น', discount: 'ลดเพิ่ม 10%', price: '฿540', oldPrice: '฿900', isPopular: true },
-      { qty: 10, title: 'แกลเลอรีผนัง', discount: 'ลดเพิ่ม 20%', price: '฿1,600', oldPrice: '฿3,000' },
-      { qty: 15, title: 'ตกแต่งบ้านโปร', discount: 'ลดเพิ่ม 30%', price: '฿2,100', oldPrice: '฿4,500' },
+      { qty: 3, title: 'เซ็ตเริ่มต้น', discount: 'ลด 40%', price: '฿540', oldPrice: '฿900', isPopular: true },
+      { qty: 10, title: 'แกลเลอรีผนัง', discount: 'ลด 47%', price: '฿1,600', oldPrice: '฿3,000' },
+      { qty: 15, title: 'ตกแต่งบ้านโปร', discount: 'ลด 53%', price: '฿2,100', oldPrice: '฿4,500' },
     ],
 
     footerBrand: 'MemoTile - กรอบรูปคุณภาพสูงที่ติดแน่นไปกับชีวิตของคุณ',
@@ -380,7 +379,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* ✨ Pricing & Bundles Section (새로 추가됨) */}
+      {/* Pricing & Bundles Section */}
       <section className="px-8 md:px-12 py-20 bg-[#FAFAFA] border-t border-gray-100 overflow-x-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
