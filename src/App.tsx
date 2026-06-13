@@ -13,6 +13,19 @@ interface TranslationStrings {
   howItWorksSteps: { title: string; desc: string }[];
   inspirationTitle: string;
   inspirationLabels: { travel: string; family: string; pets: string; passion: string };
+
+  // ✨ 가격표 관련 번역 데이터 추가
+  pricingTitle: string;
+  pricingSub: string;
+  pricingCards: {
+    qty: number;
+    title: string;
+    discount: string;
+    price: string;
+    oldPrice: string;
+    isPopular?: boolean;
+  }[];
+
   footerBrand: string;
   footerContact: string;
   brandStoryQuote: string;
@@ -44,6 +57,17 @@ const translations: Record<Language, TranslationStrings> = {
     ],
     inspirationTitle: 'Get Inspired',
     inspirationLabels: { travel: 'Travel', family: 'Family', pets: 'Pets', passion: 'Passion (Fandom)' },
+
+    // ✨ 가격표 영어 번역
+    pricingTitle: 'Special Bundle Offers',
+    pricingSub: 'The more you frame, the more you save. Limited time offer!',
+    pricingCards: [
+      { qty: 1, title: 'Single Tile', discount: '33% OFF', price: '฿200', oldPrice: '฿300' },
+      { qty: 3, title: 'Starter Set', discount: 'Extra 10%', price: '฿540', oldPrice: '฿900', isPopular: true },
+      { qty: 10, title: 'Gallery Wall', discount: 'Extra 20%', price: '฿1,600', oldPrice: '฿3,000' },
+      { qty: 15, title: 'Pro Decorator', discount: 'Extra 30%', price: '฿2,100', oldPrice: '฿4,500' },
+    ],
+
     footerBrand: 'MemoTile - High-quality photo tiles that stick to your life.',
     footerContact: 'Contact Us',
     brandStoryQuote: 'Countless beautiful photos are frozen inside your gallery app, slowly being forgotten. MemoTile brings those precious memories out — alive on your wall and present in your everyday life. The most perfect gift for you and the ones you love.',
@@ -111,6 +135,17 @@ const translations: Record<Language, TranslationStrings> = {
     ],
     inspirationTitle: 'แรงบันดาลใจ',
     inspirationLabels: { travel: 'ท่องเที่ยว', family: 'ครอบครัว', pets: 'สัตว์เลี้ยง', passion: 'ความชอบ (แฟนดอม)' },
+
+    // ✨ ราคาโปรโมชั่นแปลไทย
+    pricingTitle: 'โปรโมชั่นเซ็ตสุดคุ้ม',
+    pricingSub: 'ยิ่งซื้อเยอะ ยิ่งลดเยอะ โปรโมชั่นมีเวลาจำกัด!',
+    pricingCards: [
+      { qty: 1, title: 'กรอบเดี่ยว', discount: 'ลด 33%', price: '฿200', oldPrice: '฿300' },
+      { qty: 3, title: 'เซ็ตเริ่มต้น', discount: 'ลดเพิ่ม 10%', price: '฿540', oldPrice: '฿900', isPopular: true },
+      { qty: 10, title: 'แกลเลอรีผนัง', discount: 'ลดเพิ่ม 20%', price: '฿1,600', oldPrice: '฿3,000' },
+      { qty: 15, title: 'ตกแต่งบ้านโปร', discount: 'ลดเพิ่ม 30%', price: '฿2,100', oldPrice: '฿4,500' },
+    ],
+
     footerBrand: 'MemoTile - กรอบรูปคุณภาพสูงที่ติดแน่นไปกับชีวิตของคุณ',
     footerContact: 'ติดต่อเรา',
     brandStoryQuote: 'รูปภาพสวยงามมากมายถูกแช่แข็งอยู่ในแกลเลอรีของคุณ ค่อยๆ ลืมเลือนไป MemoTile นำความทรงจำอันล้ำค่าเหล่านั้นออกมา — มีชีวิตบนผนังของคุณและอยู่ในชีวิตประจำวันของคุณ ของขวัญที่สมบูรณ์แบบที่สุดสำหรับคุณและคนที่คุณรัก',
@@ -272,7 +307,7 @@ export default function App() {
                 </div>
               </a>
 
-              {/* ✨ 구글 플레이 스토어 버튼 - 링크 적용 완료됨 */}
+              {/* Google Play Store Button */}
               <a href="https://play.google.com/store/apps/details?id=com.memotile.android" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2.5 bg-[#41424E] text-white px-5 py-2.5 rounded-xl hover:bg-[#2c2d36] hover:scale-105 transition-all shadow-lg w-48 relative z-10">
                 <svg className="w-7 h-7" viewBox="0 0 512 512" fill="currentColor">
                   <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
@@ -340,6 +375,62 @@ export default function App() {
                   <img src={src} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ✨ Pricing & Bundles Section (새로 추가됨) */}
+      <section className="px-8 md:px-12 py-20 bg-[#FAFAFA] border-t border-gray-100 overflow-x-hidden">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8BD1C4] mb-4">Pricing & Offers</h3>
+            <h2 className="text-3xl md:text-4xl font-black text-[#41424E] mb-4">{t.pricingTitle}</h2>
+            <p className="text-gray-500 font-medium">{t.pricingSub}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {t.pricingCards.map((card, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -10 }}
+                className={`relative bg-white rounded-3xl p-8 border-2 transition-all shadow-sm flex flex-col ${card.isPopular ? 'border-[#8BD1C4] shadow-[#8BD1C4]/20 shadow-xl scale-105 z-10' : 'border-gray-100 hover:border-gray-200'
+                  }`}
+              >
+                {card.isPopular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#8BD1C4] text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md w-max">
+                    Most Popular
+                  </div>
+                )}
+
+                <div className="text-center mb-6">
+                  <span className="text-sm font-black text-gray-400 uppercase tracking-wider">{card.title}</span>
+                  <div className="flex items-center justify-center gap-2 mt-4 mb-2">
+                    <span className="text-gray-300 line-through font-bold text-lg">{card.oldPrice}</span>
+                    <span className="text-4xl font-black text-[#41424E]">{card.price}</span>
+                  </div>
+                  <span className="inline-block bg-[#FCD34C]/20 text-[#b89a1f] text-xs font-bold px-3 py-1 rounded-full">
+                    {card.discount}
+                  </span>
+                </div>
+
+                <ul className="text-sm text-gray-500 space-y-3 mb-8 flex-1">
+                  <li className="flex items-center gap-2">
+                    <span className="text-[#8BD1C4]">✔</span> {card.qty} Premium 4K Tiles
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-[#8BD1C4]">✔</span> 20x20cm Borderless
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-[#8BD1C4]">✔</span> No Nails Required
+                  </li>
+                </ul>
+
+                <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className={`w-full py-3 rounded-xl font-bold transition-all ${card.isPopular ? 'bg-[#41424E] text-white hover:bg-[#2c2d36]' : 'bg-gray-100 text-[#41424E] hover:bg-gray-200'
+                  }`}>
+                  Get the App
+                </button>
+              </motion.div>
             ))}
           </div>
         </div>
