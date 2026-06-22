@@ -1,7 +1,7 @@
 // memotile-landing-page/src/App.tsx
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Mail, Phone, MessageCircle, ChevronDown, X, User, Instagram } from 'lucide-react';
+import { Mail, Phone, MessageCircle, ChevronDown, X, User, Instagram, Truck } from 'lucide-react';
 
 type Language = 'EN' | 'TH';
 
@@ -16,12 +16,21 @@ interface TranslationStrings {
 
   pricingTitle: string;
   pricingSub: string;
+  pricingPerTileLabel: string;
+  pricingFreeShip: string;
+  pricingTilesLabel: string;
+  pricingBorderless: string;
+  pricingNoNails: string;
+  pricingCta: string;
+  pricingNote: string;
   pricingCards: {
     qty: number;
     title: string;
     discount: string;
     price: string;
     oldPrice: string;
+    perTile: string;
+    freeShip?: boolean;
     isPopular?: boolean;
   }[];
 
@@ -57,14 +66,21 @@ const translations: Record<Language, TranslationStrings> = {
     inspirationTitle: 'Get Inspired',
     inspirationLabels: { travel: 'Travel', family: 'Family', pets: 'Pets', passion: 'Passion (Fandom)' },
 
-    // ✨ 수정된 총 할인율 반영 (EN)
-    pricingTitle: 'Special Bundle Offers',
-    pricingSub: 'The more you frame, the more you save. Limited time offer!',
+    // ✨ PDF 정책 반영: 정상가 200฿/장, 3장25% · 6장37.5% · 9장44.5%(무료배송) · 15장60%
+    pricingTitle: 'Buy more, save more',
+    pricingSub: 'Up to 60% OFF + free shipping on 9+ tiles. The more you frame, the cheaper each tile.',
+    pricingPerTileLabel: 'per tile',
+    pricingFreeShip: 'Free shipping',
+    pricingTilesLabel: 'Premium 4K Tiles',
+    pricingBorderless: '20×20cm Borderless',
+    pricingNoNails: 'No nails required',
+    pricingCta: 'Get the App',
+    pricingNote: '* Free shipping automatically applied on 9 tiles or more. Discounts apply automatically at checkout.',
     pricingCards: [
-      { qty: 1, title: 'Single Tile', discount: '33% OFF', price: '฿200', oldPrice: '฿300' },
-      { qty: 3, title: 'Starter Set', discount: '40% OFF', price: '฿540', oldPrice: '฿900', isPopular: true },
-      { qty: 10, title: 'Gallery Wall', discount: '47% OFF', price: '฿1,600', oldPrice: '฿3,000' },
-      { qty: 15, title: 'Pro Decorator', discount: '53% OFF', price: '฿2,100', oldPrice: '฿4,500' },
+      { qty: 3, title: 'Starter Set', discount: '25% OFF', price: '฿450', oldPrice: '฿600', perTile: '฿150' },
+      { qty: 6, title: 'Classic Wall', discount: '37.5% OFF', price: '฿750', oldPrice: '฿1,200', perTile: '฿125' },
+      { qty: 9, title: 'Perfect 3×3', discount: '44.5% OFF', price: '฿999', oldPrice: '฿1,800', perTile: '฿111', freeShip: true, isPopular: true },
+      { qty: 15, title: 'Mega Gallery', discount: '60% OFF', price: '฿1,200', oldPrice: '฿3,000', perTile: '฿80', freeShip: true },
     ],
 
     footerBrand: 'MemoTile - High-quality photo tiles that stick to your life.',
@@ -135,14 +151,21 @@ const translations: Record<Language, TranslationStrings> = {
     inspirationTitle: 'แรงบันดาลใจ',
     inspirationLabels: { travel: 'ท่องเที่ยว', family: 'ครอบครัว', pets: 'สัตว์เลี้ยง', passion: 'ความชอบ (แฟนดอม)' },
 
-    // ✨ 수정된 총 할인율 반영 (TH)
-    pricingTitle: 'โปรโมชั่นเซ็ตสุดคุ้ม',
-    pricingSub: 'ยิ่งซื้อเยอะ ยิ่งลดเยอะ โปรโมชั่นมีเวลาจำกัด!',
+    // ✨ PDF 정책 반영 (TH)
+    pricingTitle: 'ยิ่งซื้อเยอะ ยิ่งคุ้ม',
+    pricingSub: 'ลดสูงสุด 60% + ส่งฟรีเมื่อซื้อ 9 ชิ้นขึ้นไป ยิ่งซื้อเยอะ ราคาต่อชิ้นยิ่งถูก',
+    pricingPerTileLabel: 'ต่อชิ้น',
+    pricingFreeShip: 'ส่งฟรี',
+    pricingTilesLabel: 'กรอบรูป 4K พรีเมียม',
+    pricingBorderless: 'ไร้ขอบ 20×20 ซม.',
+    pricingNoNails: 'ไม่ต้องเจาะผนัง',
+    pricingCta: 'ดาวน์โหลดแอป',
+    pricingNote: '* ส่งฟรีอัตโนมัติเมื่อซื้อตั้งแต่ 9 ชิ้นขึ้นไป ส่วนลดคำนวณอัตโนมัติตอนชำระเงิน',
     pricingCards: [
-      { qty: 1, title: 'กรอบเดี่ยว', discount: 'ลด 33%', price: '฿200', oldPrice: '฿300' },
-      { qty: 3, title: 'เซ็ตเริ่มต้น', discount: 'ลด 40%', price: '฿540', oldPrice: '฿900', isPopular: true },
-      { qty: 10, title: 'แกลเลอรีผนัง', discount: 'ลด 47%', price: '฿1,600', oldPrice: '฿3,000' },
-      { qty: 15, title: 'ตกแต่งบ้านโปร', discount: 'ลด 53%', price: '฿2,100', oldPrice: '฿4,500' },
+      { qty: 3, title: 'เซ็ตเริ่มต้น', discount: 'ลด 25%', price: '฿450', oldPrice: '฿600', perTile: '฿150' },
+      { qty: 6, title: 'เซ็ตคลาสสิก', discount: 'ลด 37.5%', price: '฿750', oldPrice: '฿1,200', perTile: '฿125' },
+      { qty: 9, title: 'เพอร์เฟกต์ 3×3', discount: 'ลด 44.5%', price: '฿999', oldPrice: '฿1,800', perTile: '฿111', freeShip: true, isPopular: true },
+      { qty: 15, title: 'เมกะแกลเลอรี', discount: 'ลด 60%', price: '฿1,200', oldPrice: '฿3,000', perTile: '฿80', freeShip: true },
     ],
 
     footerBrand: 'MemoTile - กรอบรูปคุณภาพสูงที่ติดแน่นไปกับชีวิตของคุณ',
@@ -383,17 +406,17 @@ export default function App() {
       <section className="px-8 md:px-12 py-20 bg-[#FAFAFA] border-t border-gray-100 overflow-x-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8BD1C4] mb-4">Pricing & Offers</h3>
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8BD1C4] mb-4">Pricing & Bundles</h3>
             <h2 className="text-3xl md:text-4xl font-black text-[#41424E] mb-4">{t.pricingTitle}</h2>
-            <p className="text-gray-500 font-medium">{t.pricingSub}</p>
+            <p className="text-gray-500 font-medium max-w-xl mx-auto">{t.pricingSub}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {t.pricingCards.map((card, idx) => (
               <motion.div
                 key={idx}
                 whileHover={{ y: -10 }}
-                className={`relative bg-white rounded-3xl p-8 border-2 transition-all shadow-sm flex flex-col ${card.isPopular ? 'border-[#8BD1C4] shadow-[#8BD1C4]/20 shadow-xl scale-105 z-10' : 'border-gray-100 hover:border-gray-200'
+                className={`relative bg-white rounded-3xl p-8 border-2 transition-all shadow-sm flex flex-col ${card.isPopular ? 'border-[#8BD1C4] shadow-[#8BD1C4]/20 shadow-xl lg:scale-105 z-10' : 'border-gray-100 hover:border-gray-200'
                   }`}
               >
                 {card.isPopular && (
@@ -404,34 +427,52 @@ export default function App() {
 
                 <div className="text-center mb-6">
                   <span className="text-sm font-black text-gray-400 uppercase tracking-wider">{card.title}</span>
-                  <div className="flex items-center justify-center gap-2 mt-4 mb-2">
+
+                  {/* 정상가(취소선) + 할인가 */}
+                  <div className="flex items-center justify-center gap-2 mt-4 mb-1">
                     <span className="text-gray-300 line-through font-bold text-lg">{card.oldPrice}</span>
                     <span className="text-4xl font-black text-[#41424E]">{card.price}</span>
                   </div>
-                  <span className="inline-block bg-[#FCD34C]/20 text-[#b89a1f] text-xs font-bold px-3 py-1 rounded-full">
-                    {card.discount}
-                  </span>
+
+                  {/* 장당 가격 (구매욕 자극: 장당 얼마인지) */}
+                  <p className="text-xs text-gray-400 font-bold mb-3">
+                    {card.qty} {lang === 'EN' ? 'tiles' : 'ชิ้น'} · {card.perTile} {t.pricingPerTileLabel}
+                  </p>
+
+                  {/* 할인율 + 무료배송 뱃지 */}
+                  <div className="flex items-center justify-center gap-2 flex-wrap">
+                    <span className="inline-block bg-[#FCD34C]/20 text-[#b89a1f] text-xs font-black px-3 py-1 rounded-full">
+                      {card.discount}
+                    </span>
+                    {card.freeShip && (
+                      <span className="inline-flex items-center gap-1 bg-teal-50 text-[#0f8a72] text-xs font-black px-3 py-1 rounded-full">
+                        <Truck size={12} /> {t.pricingFreeShip}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 <ul className="text-sm text-gray-500 space-y-3 mb-8 flex-1">
                   <li className="flex items-center gap-2">
-                    <span className="text-[#8BD1C4]">✔</span> {card.qty} Premium 4K Tiles
+                    <span className="text-[#8BD1C4]">✔</span> {card.qty} {t.pricingTilesLabel}
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-[#8BD1C4]">✔</span> 20x20cm Borderless
+                    <span className="text-[#8BD1C4]">✔</span> {t.pricingBorderless}
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-[#8BD1C4]">✔</span> No Nails Required
+                    <span className="text-[#8BD1C4]">✔</span> {card.freeShip ? t.pricingFreeShip : t.pricingNoNails}
                   </li>
                 </ul>
 
                 <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className={`w-full py-3 rounded-xl font-bold transition-all ${card.isPopular ? 'bg-[#41424E] text-white hover:bg-[#2c2d36]' : 'bg-gray-100 text-[#41424E] hover:bg-gray-200'
                   }`}>
-                  Get the App
+                  {t.pricingCta}
                 </button>
               </motion.div>
             ))}
           </div>
+
+          <p className="text-center text-[11px] text-gray-400 mt-8 max-w-xl mx-auto">{t.pricingNote}</p>
         </div>
       </section>
 
