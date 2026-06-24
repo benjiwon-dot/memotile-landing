@@ -66,9 +66,9 @@ const translations: Record<Language, TranslationStrings> = {
     inspirationTitle: 'Get Inspired',
     inspirationLabels: { travel: 'Travel', family: 'Family', pets: 'Pets', passion: 'Passion (Fandom)' },
 
-    // ✨ PDF 정책 반영: 정상가 200฿/장, 3장25% · 6장37.5% · 9장44.5%(무료배송) · 15장60%
+    // ✨ 가격정책 반영: 정상가 200฿/장, 3장10% · 6장15% · 9장20%(무료배송) · 12장22% · 15장25%
     pricingTitle: 'Buy more, save more',
-    pricingSub: 'Up to 60% OFF + free shipping on 9+ tiles. The more you frame, the cheaper each tile.',
+    pricingSub: 'Up to 25% OFF + free shipping on 9+ tiles. The more you frame, the cheaper each tile.',
     pricingPerTileLabel: 'per tile',
     pricingFreeShip: 'Free shipping',
     pricingTilesLabel: 'Premium 4K Tiles',
@@ -77,10 +77,10 @@ const translations: Record<Language, TranslationStrings> = {
     pricingCta: 'Get the App',
     pricingNote: '* Free shipping automatically applied on 9 tiles or more. Discounts apply automatically at checkout.',
     pricingCards: [
-      { qty: 3, title: 'Starter Set', discount: '25% OFF', price: '฿450', oldPrice: '฿600', perTile: '฿150' },
-      { qty: 6, title: 'Classic Wall', discount: '37.5% OFF', price: '฿750', oldPrice: '฿1,200', perTile: '฿125' },
-      { qty: 9, title: 'Perfect 3×3', discount: '44.5% OFF', price: '฿999', oldPrice: '฿1,800', perTile: '฿111', freeShip: true, isPopular: true },
-      { qty: 15, title: 'Mega Gallery', discount: '60% OFF', price: '฿1,200', oldPrice: '฿3,000', perTile: '฿80', freeShip: true },
+      { qty: 3, title: 'Starter Set', discount: '10% OFF', price: '฿540', oldPrice: '฿600', perTile: '฿180' },
+      { qty: 6, title: 'Classic Wall', discount: '15% OFF', price: '฿1,020', oldPrice: '฿1,200', perTile: '฿170' },
+      { qty: 9, title: 'Perfect 3×3', discount: '20% OFF', price: '฿1,440', oldPrice: '฿1,800', perTile: '฿160', freeShip: true, isPopular: true },
+      { qty: 15, title: 'Mega Gallery', discount: '25% OFF', price: '฿2,250', oldPrice: '฿3,000', perTile: '฿150', freeShip: true },
     ],
 
     footerBrand: 'MemoTile - High-quality photo tiles that stick to your life.',
@@ -151,9 +151,9 @@ const translations: Record<Language, TranslationStrings> = {
     inspirationTitle: 'แรงบันดาลใจ',
     inspirationLabels: { travel: 'ท่องเที่ยว', family: 'ครอบครัว', pets: 'สัตว์เลี้ยง', passion: 'ความชอบ (แฟนดอม)' },
 
-    // ✨ PDF 정책 반영 (TH)
+    // ✨ 가격정책 반영 (TH): 3장10% · 6장15% · 9장20%(무료배송) · 12장22% · 15장25%
     pricingTitle: 'ยิ่งซื้อเยอะ ยิ่งคุ้ม',
-    pricingSub: 'ลดสูงสุด 60% + ส่งฟรีเมื่อซื้อ 9 ชิ้นขึ้นไป ยิ่งซื้อเยอะ ราคาต่อชิ้นยิ่งถูก',
+    pricingSub: 'ลดสูงสุด 25% + ส่งฟรีเมื่อซื้อ 9 ชิ้นขึ้นไป ยิ่งซื้อเยอะ ราคาต่อชิ้นยิ่งถูก',
     pricingPerTileLabel: 'ต่อชิ้น',
     pricingFreeShip: 'ส่งฟรี',
     pricingTilesLabel: 'กรอบรูป 4K พรีเมียม',
@@ -162,10 +162,10 @@ const translations: Record<Language, TranslationStrings> = {
     pricingCta: 'ดาวน์โหลดแอป',
     pricingNote: '* ส่งฟรีอัตโนมัติเมื่อซื้อตั้งแต่ 9 ชิ้นขึ้นไป ส่วนลดคำนวณอัตโนมัติตอนชำระเงิน',
     pricingCards: [
-      { qty: 3, title: 'เซ็ตเริ่มต้น', discount: 'ลด 25%', price: '฿450', oldPrice: '฿600', perTile: '฿150' },
-      { qty: 6, title: 'เซ็ตคลาสสิก', discount: 'ลด 37.5%', price: '฿750', oldPrice: '฿1,200', perTile: '฿125' },
-      { qty: 9, title: 'เพอร์เฟกต์ 3×3', discount: 'ลด 44.5%', price: '฿999', oldPrice: '฿1,800', perTile: '฿111', freeShip: true, isPopular: true },
-      { qty: 15, title: 'เมกะแกลเลอรี', discount: 'ลด 60%', price: '฿1,200', oldPrice: '฿3,000', perTile: '฿80', freeShip: true },
+      { qty: 3, title: 'เซ็ตเริ่มต้น', discount: 'ลด 10%', price: '฿540', oldPrice: '฿600', perTile: '฿180' },
+      { qty: 6, title: 'เซ็ตคลาสสิก', discount: 'ลด 15%', price: '฿1,020', oldPrice: '฿1,200', perTile: '฿170' },
+      { qty: 9, title: 'เพอร์เฟกต์ 3×3', discount: 'ลด 20%', price: '฿1,440', oldPrice: '฿1,800', perTile: '฿160', freeShip: true, isPopular: true },
+      { qty: 15, title: 'เมกะแกลเลอรี', discount: 'ลด 25%', price: '฿2,250', oldPrice: '฿3,000', perTile: '฿150', freeShip: true },
     ],
 
     footerBrand: 'MemoTile - กรอบรูปคุณภาพสูงที่ติดแน่นไปกับชีวิตของคุณ',
