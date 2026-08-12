@@ -49,6 +49,18 @@ export interface TranslationStrings {
   deletionTitle: string;
   deletionContent: { title: string; body: string }[];
   deletionButton: string;
+  // /data-deletion 전용 페이지 (Meta 심사 제출용). 앱 내 경로는 실제 UI 문구와 일치해야 한다.
+  ddIntro: string;
+  ddOpt1Title: string;
+  ddOpt1Body: string;
+  ddOpt2Title: string;
+  ddOpt2Body: string;
+  ddWhatTitle: string;
+  ddWhatItems: string[];
+  ddLegalHold: string;
+  ddFacebookTitle: string;
+  ddFacebookBody: string;
+  ddContact: string;
 }
 
 export const translations: Record<Language, TranslationStrings> = {
@@ -105,12 +117,15 @@ export const translations: Record<Language, TranslationStrings> = {
       { title: '3. Purpose of Use', body: 'Your data is used to process and fulfill orders, communicate about your order, improve our services, and comply with legal obligations.' },
       { title: '4. Disclosure of Data', body: 'We share your data with trusted delivery partners and payment processors as required. We do not sell your personal data to third parties.' },
       { title: '5. Data Security', body: 'We implement industry-standard security measures to protect your personal data from unauthorized access, alteration, or disclosure.' },
-      { title: '6. Data Retention', body: 'We retain your data as long as necessary to provide services and meet legal requirements, typically no longer than 3 years after your last transaction.' },
-      { title: '7. Your Rights', body: 'You have the right to access, correct, or delete your personal data. Contact us at official@memotile.com to exercise these rights.' },
-      { title: '8. Cookies', body: 'Our website uses cookies to enhance your experience. You may disable cookies in your browser settings, though some features may be affected.' },
-      { title: '9. Policy Changes', body: 'We may update this policy periodically. Significant changes will be communicated via email or a prominent notice on our website.' },
-      { title: '10. Contact', body: 'For privacy inquiries, contact us at official@memotile.com or Line: @memotile.' },
-      { title: '11. Consent', body: 'By using our services, you consent to the collection and use of your information as described in this Privacy Policy.' },
+      { title: '6. Face Recognition Data (AI Photobook)', body: 'When you use the AI Photobook feature, the app detects faces in the photos on your device and converts them into numerical feature values ("embeddings"). This detection and embedding runs entirely on your device. Embeddings are stored only on your device and are never uploaded to our servers. They are used solely to group photos of the same person and are not used to verify or authenticate anyone\u2019s identity. Photos in your library are not uploaded while scanning. Separately, the reference photos you choose when creating a profile are uploaded to our secure storage so the feature works across sessions and devices, and the photos included in an order are uploaded to produce your printed product. Embeddings are deleted when you delete the app or your account.' },
+      { title: '7. Consent to Face Scanning', body: 'Face scanning runs only when you start it yourself. It never runs in the background, and you can stop it at any time. You may use the rest of MemoTile without using this feature.' },
+      { title: '8. Sensitive Data Notice', body: 'Under the Thailand Personal Data Protection Act (PDPA), facial feature data may be treated as biometric \u2014 that is, sensitive \u2014 personal data. We process it only with your explicit consent, given when you choose to use the AI Photobook feature, and only in the manner described above. You may withdraw consent at any time by deleting your profile or account.' },
+      { title: '9. Data Retention', body: 'We retain your data as long as necessary to provide services and meet legal requirements, typically no longer than 3 years after your last transaction.' },
+      { title: '10. Your Rights', body: 'You have the right to access, correct, or delete your personal data. Contact us at official@memotile.com to exercise these rights.' },
+      { title: '11. Cookies', body: 'Our website uses cookies to enhance your experience. You may disable cookies in your browser settings, though some features may be affected.' },
+      { title: '12. Policy Changes', body: 'We may update this policy periodically. Significant changes will be communicated via email or a prominent notice on our website.' },
+      { title: '13. Contact', body: 'For privacy inquiries, contact us at official@memotile.com or Line: @memotile.' },
+      { title: '14. Consent', body: 'By using our services, you consent to the collection and use of your information as described in this Privacy Policy.' },
     ],
     termsTitle: 'Terms of Service',
     termsOfService: [
@@ -135,7 +150,18 @@ export const translations: Record<Language, TranslationStrings> = {
       { title: 'How to Request Deletion', body: 'If you wish to delete your MemoTile account and all associated personal data, order history, and uploaded photos, please send us an email request. We will securely erase your data within 7-14 business days.' },
       { title: 'Important Note', body: 'Once your account is deleted, it cannot be recovered. If you have an active, unfulfilled order, we will process the deletion request after the order has been successfully delivered.' }
     ],
-    deletionButton: 'Send Deletion Request Email'
+    deletionButton: 'Send Deletion Request Email',
+    ddIntro: 'You can delete your account and associated data using either of the two methods below.',
+    ddOpt1Title: 'Option 1 \u00b7 Delete in the app',
+    ddOpt1Body: 'Sign in to the MemoTile app, then go to [Profile tab \u2192 Legal (\u0e01\u0e0e\u0e2b\u0e21\u0e32\u0e22\u0e41\u0e25\u0e30\u0e02\u0e49\u0e2d\u0e01\u0e33\u0e2b\u0e19\u0e14) \u2192 Delete Account (\u0e25\u0e1a\u0e1a\u0e31\u0e0d\u0e0a\u0e35)]. Deletion begins immediately.',
+    ddOpt2Title: 'Option 2 \u00b7 Request by email',
+    ddOpt2Body: 'Email official@memotile.com with the email address you signed up with. We will process your request within 7 business days.',
+    ddWhatTitle: 'What gets deleted',
+    ddWhatItems: ['Account information (email, profile)', 'Photos you uploaded', 'Face recognition embedding data', 'Order history'],
+    ddLegalHold: 'However, payment and tax records that we are legally required to retain will be kept for the period required by applicable law.',
+    ddFacebookTitle: 'If you signed up with Facebook Login',
+    ddFacebookBody: 'The same process applies if you signed up using Facebook Login. All data MemoTile holds about you will be deleted. Your Facebook account itself is not affected.',
+    ddContact: 'Contact: official@memotile.com'
   },
   TH: {
     navLogo: 'MemoTile',
@@ -190,12 +216,15 @@ export const translations: Record<Language, TranslationStrings> = {
       { title: '3. วัตถุประสงค์การใช้ข้อมูล', body: 'ข้อมูลของคุณถูกใช้เพื่อประมวลผลและจัดส่งคำสั่งซื้อ ติดต่อสื่อสารเกี่ยวกับคำสั่งซื้อ ปรับปรุงบริการ และปฏิบัติตามข้อกำหนดทางกฎหมาย' },
       { title: '4. การเปิดเผยข้อมูล', body: 'เราแชร์ข้อมูลของคุณกับพันธมิตรจัดส่งและผู้ประมวลผลการชำระเงินที่เชื่อถือได้เท่าที่จำเป็น เราไม่ขายข้อมูลส่วนบุคคลของคุณ' },
       { title: '5. การรักษาความปลอดภัย', body: 'เราใช้มาตรการรักษาความปลอดภัยมาตรฐานอุตสาหกรรมเพื่อปกป้องข้อมูลส่วนบุคคลของคุณจากการเข้าถึงโดยไม่ได้รับอนุญาต' },
-      { title: '6. ระยะเวลาการเก็บรักษาข้อมูล', body: 'เราเก็บรักษาข้อมูลของคุณตราบเท่าที่จำเป็นต่อการให้บริการ โดยปกติไม่เกิน 3 ปีนับจากธุรกรรมล่าสุด' },
-      { title: '7. สิทธิ์ของเจ้าของข้อมูล', body: 'คุณมีสิทธิ์เข้าถึง แก้ไข หรือลบข้อมูลส่วนบุคคลของคุณ โปรดติดต่อเราได้ที่ official@memotile.com' },
-      { title: '8. คุกกี้และเทคโนโลยีติดตาม', body: 'เว็บไซต์ของเราใช้คุกกี้เพื่อพัฒนาประสบการณ์การใช้งาน คุณสามารถปิดใช้งานคุกกี้ในการตั้งค่าเบราว์เซอร์ได้' },
-      { title: '9. การเปลี่ยนแปลงนโยบาย', body: 'เราอาจอัปเดตนโยบายนี้เป็นครั้งคราว และจะแจ้งให้คุณทราบผ่านทางอีเมลหรือประกาศบนเว็บไซต์' },
-      { title: '10. ข้อมูลติดต่อ', body: 'สำหรับคำถามด้านความเป็นส่วนตัว ติดต่อเราได้ที่ official@memotile.com หรือ Line: @memotile' },
-      { title: '11. การยินยอม', body: 'การใช้บริการของเราถือว่าคุณยินยอมให้เรารวบรวมและใช้ข้อมูลตามที่ระบุในนโยบายความเป็นส่วนตัวนี้' },
+      { title: '6. ข้อมูลการจดจำใบหน้า (โฟโต้บุ๊ก AI)', body: 'เมื่อคุณใช้ฟีเจอร์โฟโต้บุ๊ก AI แอปจะตรวจจับใบหน้าในรูปภาพบนเครื่องของคุณ และแปลงเป็นค่าตัวเลขเชิงลักษณะ (embeddings) การประมวลผลนี้เกิดขึ้นบนเครื่องของคุณทั้งหมด ค่า embeddings ถูกเก็บไว้บนเครื่องของคุณเท่านั้น และไม่ถูกอัปโหลดไปยังเซิร์ฟเวอร์ของเรา ใช้เพื่อจัดกลุ่มรูปของบุคคลเดียวกันเท่านั้น ไม่ได้ใช้เพื่อยืนยันหรือพิสูจน์ตัวตนของผู้ใด รูปภาพในคลังของคุณจะไม่ถูกอัปโหลดระหว่างการสแกน ทั้งนี้ รูปอ้างอิงที่คุณเลือกตอนสร้างโปรไฟล์จะถูกอัปโหลดไปยังพื้นที่จัดเก็บที่ปลอดภัยของเรา เพื่อให้ฟีเจอร์ทำงานได้ข้ามการใช้งานและข้ามอุปกรณ์ และรูปที่อยู่ในคำสั่งซื้อจะถูกอัปโหลดเพื่อผลิตสินค้าของคุณ ค่า embeddings จะถูกลบเมื่อคุณลบแอปหรือลบบัญชี' },
+      { title: '7. การให้ความยินยอมสำหรับการสแกนใบหน้า', body: 'การสแกนใบหน้าจะทำงานเมื่อคุณเริ่มด้วยตนเองเท่านั้น ไม่ทำงานเบื้องหลัง และคุณสามารถหยุดได้ทุกเมื่อ คุณสามารถใช้บริการอื่นของ MemoTile ได้โดยไม่ต้องใช้ฟีเจอร์นี้' },
+      { title: '8. ประกาศเกี่ยวกับข้อมูลอ่อนไหว', body: 'ภายใต้พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล (PDPA) ของประเทศไทย ข้อมูลลักษณะใบหน้าอาจถือเป็นข้อมูลชีวมิติ ซึ่งเป็นข้อมูลส่วนบุคคลอ่อนไหว เราประมวลผลข้อมูลดังกล่าวเมื่อได้รับความยินยอมโดยชัดแจ้งจากคุณ ซึ่งเกิดขึ้นเมื่อคุณเลือกใช้ฟีเจอร์โฟโต้บุ๊ก AI และเป็นไปตามที่อธิบายไว้ข้างต้นเท่านั้น คุณสามารถถอนความยินยอมได้ทุกเมื่อโดยลบโปรไฟล์หรือบัญชีของคุณ' },
+      { title: '9. ระยะเวลาการเก็บรักษาข้อมูล', body: 'เราเก็บรักษาข้อมูลของคุณตราบเท่าที่จำเป็นต่อการให้บริการ โดยปกติไม่เกิน 3 ปีนับจากธุรกรรมล่าสุด' },
+      { title: '10. สิทธิ์ของเจ้าของข้อมูล', body: 'คุณมีสิทธิ์เข้าถึง แก้ไข หรือลบข้อมูลส่วนบุคคลของคุณ โปรดติดต่อเราได้ที่ official@memotile.com' },
+      { title: '11. คุกกี้และเทคโนโลยีติดตาม', body: 'เว็บไซต์ของเราใช้คุกกี้เพื่อพัฒนาประสบการณ์การใช้งาน คุณสามารถปิดใช้งานคุกกี้ในการตั้งค่าเบราว์เซอร์ได้' },
+      { title: '12. การเปลี่ยนแปลงนโยบาย', body: 'เราอาจอัปเดตนโยบายนี้เป็นครั้งคราว และจะแจ้งให้คุณทราบผ่านทางอีเมลหรือประกาศบนเว็บไซต์' },
+      { title: '13. ข้อมูลติดต่อ', body: 'สำหรับคำถามด้านความเป็นส่วนตัว ติดต่อเราได้ที่ official@memotile.com หรือ Line: @memotile' },
+      { title: '14. การยินยอม', body: 'การใช้บริการของเราถือว่าคุณยินยอมให้เรารวบรวมและใช้ข้อมูลตามที่ระบุในนโยบายความเป็นส่วนตัวนี้' },
     ],
     termsTitle: 'เงื่อนไขการใช้บริการ',
     termsOfService: [
@@ -220,6 +249,17 @@ export const translations: Record<Language, TranslationStrings> = {
       { title: 'วิธีการขอลบบัญชี', body: 'หากต้องการลบบัญชี MemoTile และข้อมูลส่วนบุคคล ประวัติการสั่งซื้อ และรูปภาพที่อัปโหลดทั้งหมด โปรดส่งอีเมลแจ้งความประสงค์มาที่เรา เราจะดำเนินการลบข้อมูลของคุณอย่างปลอดภัยภายใน 7-14 วันทำการ' },
       { title: 'ข้อควรระวัง', body: 'เมื่อลบแล้วจะไม่สามารถกู้คืนบัญชีได้ หากคุณมีคำสั่งซื้อที่กำลังดำเนินการอยู่ ข้อมูลของคุณจะถูกลบหลังจากจัดส่งคำสั่งซื้อเรียบร้อยแล้ว' }
     ],
-    deletionButton: 'ส่งอีเมลขอลบบัญชี'
+    deletionButton: 'ส่งอีเมลขอลบบัญชี',
+    ddIntro: 'คุณสามารถลบบัญชีและข้อมูลที่เกี่ยวข้องได้ด้วยวิธีใดวิธีหนึ่งจากสองวิธีด้านล่าง',
+    ddOpt1Title: 'วิธีที่ 1 \u00b7 ลบในแอป',
+    ddOpt1Body: 'เข้าสู่ระบบในแอป MemoTile จากนั้นไปที่ [แท็บ Profile (โปรไฟล์) \u2192 Legal (กฎหมายและข้อกำหนด) \u2192 Delete Account (ลบบัญชี)] การลบจะเริ่มทันที',
+    ddOpt2Title: 'วิธีที่ 2 \u00b7 ขอผ่านอีเมล',
+    ddOpt2Body: 'ส่งอีเมลถึง official@memotile.com พร้อมระบุอีเมลที่คุณใช้สมัคร เราจะดำเนินการภายใน 7 วันทำการ',
+    ddWhatTitle: 'ข้อมูลที่จะถูกลบ',
+    ddWhatItems: ['ข้อมูลบัญชี (อีเมล โปรไฟล์)', 'รูปภาพที่คุณอัปโหลด', 'ข้อมูลค่าลักษณะใบหน้า (embeddings)', 'ประวัติคำสั่งซื้อ'],
+    ddLegalHold: 'ทั้งนี้ บันทึกการชำระเงินและภาษีที่เรามีหน้าที่ต้องเก็บรักษาตามกฎหมาย จะถูกเก็บไว้ตามระยะเวลาที่กฎหมายที่เกี่ยวข้องกำหนด',
+    ddFacebookTitle: 'หากคุณสมัครด้วย Facebook Login',
+    ddFacebookBody: 'ขั้นตอนเดียวกันนี้ใช้กับผู้ที่สมัครด้วย Facebook Login ข้อมูลทั้งหมดที่ MemoTile เก็บไว้เกี่ยวกับคุณจะถูกลบ ทั้งนี้ไม่มีผลต่อบัญชี Facebook ของคุณ',
+    ddContact: 'ติดต่อ: official@memotile.com'
   },
 };
